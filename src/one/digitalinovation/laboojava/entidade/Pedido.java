@@ -37,11 +37,11 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public List<Produto> getProduto(){
+    public List<Produto> getProdutos(){
         return produtos;
     }
 
-    public void setProduto(List<Produto> produtos){
+    public void setProdutos(List<Produto> produtos){
         this.produtos = produtos;
     }
 
@@ -51,6 +51,26 @@ public class Pedido {
 
     public void setTotal(double total){
         this.total = total;
+    }
+
+    /**
+     * Percorre a lista de produtos do pedido
+     * e armazena-os em um StringBuilder
+     * @return produtos comprados em forma de texto
+     */
+    private String getProdutosComprados(){
+        StringBuilder produtos = new StringBuilder();
+        produtos.append("[");
+
+        for(Produto produto: getProdutos()){
+            produtos.append(produto.toString());
+            produtos.append("Qtd");
+            produtos.append(produto.getQuantidade());
+            produtos.append(" ");
+        }
+        produtos.append("]");
+
+        return produtos.toString();
     }
 
     @Override
